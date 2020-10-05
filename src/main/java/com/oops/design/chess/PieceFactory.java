@@ -20,6 +20,7 @@ public class PieceFactory {
             case ROOK: return new Rook();
             case QUEEN: return new Queen();
             case KING: return new King();
+            case HORSE: return new Horse();
             default:
                 throw new RuntimeException("Invalid piece type.");
         }

@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+/**
+ * @author Sangramsing
+ */
 public class Board {
 
     public static final int SIZE = 8;

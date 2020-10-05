@@ -12,15 +12,15 @@ import static org.junit.Assert.assertTrue;
 /**
  * @author Sangramsing
  */
-public class RookMoveTest {
+public class HorseMoveTest {
 
     @Test
-    public void validateRookMove() {
+    public void validateHorseMove() {
         Board board = new Board();
-        List<Square> possibleMoves = board.getPossibleMoves("Rook", "G6");
-        assertEquals(14, possibleMoves.size());
+        List<Square> possibleMoves = board.getPossibleMoves("Horse", "E3");
+        assertEquals(8, possibleMoves.size());
         List<String> moveSquares = possibleMoves.stream().map(e -> e.getRowName()).collect(Collectors.toList());
-        List<String> inputSquares = Arrays.asList("G5", "G4", "G3", "G2", "G1", "G7", "G8", "H6", "F6", "E6", "D6", "C6", "B6", "A6");
+        List<String> inputSquares = Arrays.asList("D1", "F1", "D5", "F5", "G2", "G4", "C2", "C4");
         assertTrue(moveSquares.containsAll(inputSquares));
     }
 
