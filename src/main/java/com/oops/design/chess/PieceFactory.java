@@ -1,10 +1,7 @@
 package com.oops.design.chess;
 
 import com.oops.design.chess.constant.PieceType;
-import com.oops.design.chess.pieces.Bishop;
-import com.oops.design.chess.pieces.Pawn;
-import com.oops.design.chess.pieces.Piece;
-import com.oops.design.chess.pieces.Rook;
+import com.oops.design.chess.pieces.*;
 
 /**
  * Piece Factory Implementation.
@@ -21,6 +18,8 @@ public class PieceFactory {
             case PAWN: return new Pawn();
             case BISHOP: return new Bishop();
             case ROOK: return new Rook();
+            case QUEEN: return new Queen();
+            case KING: return new King();
             default:
                 throw new RuntimeException("Invalid piece type.");
         }

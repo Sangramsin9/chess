@@ -8,6 +8,9 @@ import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
 
+/**
+ * @author Sangramsing
+ */
 public class BishopMoveTest {
 
     @Test
