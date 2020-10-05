@@ -13,8 +13,14 @@ public class Board {
 
     public static final int SIZE = 8;
     private Square[][] board;
+    private boolean displayBoard;
 
     public Board() {
+        init();
+    }
+
+    public Board(boolean displayBoard) {
+        this.displayBoard = displayBoard;
         init();
     }
 
@@ -23,16 +29,18 @@ public class Board {
         for ( int i=0; i<SIZE; i++) {
             for ( int j=0; j<SIZE; j++) {
                 String rowName = String.valueOf( (char) ('A'+ j)) +""+((SIZE)-i);
-                System.out.print(rowName + " ");
+                if (displayBoard)
+                    System.out.print(rowName + " ");
                 board[i][j] = new Square(i, j, this, rowName);
             }
-            System.out.println();
+            if (displayBoard)
+                System.out.println();
         }
-        System.out.println("Board created...");
+        //System.out.println("Board created...");
     }
 
     public List<Square> getPossibleMoves(String piece, String location) {
-        System.out.println("Finding Possible moves for ("+ piece + "," + location+")");
+        //System.out.println("Finding Possible moves for ("+ piece + "," + location+")");
         Piece piece1 = PieceFactory.getPiece(piece);
 
         // Find 'Pawn D5' move's actual 2D array location.
@@ -56,5 +64,13 @@ public class Board {
                 .flatMap(row -> Stream.of(row))
                 .filter(e -> e.getRowName().equals(squareName)).findAny();
         return squareOpt.get();
+    }
+
+    public boolean isDisplayBoard() {
+        return displayBoard;
+    }
+
+    public void setDisplayBoard(boolean displayBoard) {
+        this.displayBoard = displayBoard;
     }
 }
