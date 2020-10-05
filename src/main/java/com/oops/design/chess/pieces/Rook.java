@@ -9,63 +9,61 @@ import java.util.List;
 /**
  * @author Sangramsing
  */
-public class Bishop extends Piece {
+public class Rook extends Piece {
 
     private List<Square> possibleMoves;
 
-    public Bishop( ) {
-        possibleMoves = new ArrayList<>();
+    public Rook() {
+        this.possibleMoves = new ArrayList<>();
     }
 
     @Override
     public List<Square> generatePossibleMoves() {
         int column = getSquare().getColumn();
         int row = getSquare().getRow();
-        int j= column+1;
-
-        //down right
-        for (int i= row+1; (i < Board.SIZE  && j <Board.SIZE);) {
+        int j = column;
+        // down
+        for (int i = row + 1; i < Board.SIZE; ) {
             Square square = getSquare().getBoardSquare(i, j);
-            if (square.isEmpty()) {
+            if (square.getPiece() == null) {
                 possibleMoves.add(square);
             } else {
                 break;
             }
             i++;
-            j++;
         }
-
-        // up left
-        j=column-1;
-        for (int i= row-1; (i >= 0 && j >= 0);) {
+        // up
+        for (int i = row - 1; i >= 0; ) {
             Square square = getSquare().getBoardSquare(i, j);
-            if (square.isEmpty()) {
+            if (square.getPiece() == null) {
                 possibleMoves.add(square);
+            } else {
+                break;
             }
             i--;
-            j--;
         }
 
-        // up right
-        j = column+1;
-        for (int i=row-1; (i >= 0 && j < Board.SIZE);) {
-            Square square = getSquare().getBoardSquare(i, j);
-            if (square.isEmpty()) {
+        // left
+        j = row;
+        for (int i = column + 1; i < Board.SIZE; ) {
+            Square square = getSquare().getBoardSquare(j, i);
+            if (square.getPiece() == null) {
                 possibleMoves.add(square);
-            }
-            i--;
-            j++;
-        }
-
-        // down left
-        j = column-1;
-        for (int i=row+1; (i < Board.SIZE && j >= 0);) {
-            Square square = getSquare().getBoardSquare(i, j);
-            if (square.isEmpty()) {
-                possibleMoves.add(square);
+            } else {
+                break;
             }
             i++;
-            j--;
+        }
+        // left
+        j = row;
+        for (int i = column - 1; i >=0 ; ) {
+            Square square = getSquare().getBoardSquare(j, i);
+            if (square.getPiece() == null) {
+                possibleMoves.add(square);
+            } else {
+                break;
+            }
+            i--;
         }
         return possibleMoves;
     }
