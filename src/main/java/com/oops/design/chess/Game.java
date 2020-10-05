@@ -15,7 +15,7 @@ public class Game {
         String[] pieceMoveArr = pieceMove.split(" ");
         Board board = new Board();
         List<Square> possibleMoves = board.getPossibleMoves(pieceMoveArr[0], pieceMoveArr[1]);
-
+        possibleMoves.forEach(e-> System.out.println( e.getRowName() +" ["+ e.getRow() + ","+ e.getColumn()+"]"));
     }
 
 }
